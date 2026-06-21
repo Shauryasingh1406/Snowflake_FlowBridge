@@ -91,3 +91,6 @@ create pipe if not exists bronze_sch.supply_chain_pipe
         start_time => dateadd(hours,-1,current_timestamp())
     ));
 
+show warehouses;
+show databases;
+use schema BRONZE_SCH;
