@@ -776,3 +776,28 @@ JOIN SILVER_SCH.DIM_WAREHOUSE   W  ON F.warehouse_sk = W.warehouse_sk
 LEFT JOIN SILVER_SCH.DIM_SHIPMENT SH ON F.shipment_sk = SH.shipment_sk
 LIMIT 20;
 
+-- ============================================================
+-- TWO BUGS FIXED FROM YOUR ORIGINAL CODE — NOTE THESE
+-- ============================================================
+-- BUG 1: face_orders → fact_orders (typo in table name)
+--        Original: CREATE OR REPLACE TABLE SILVER_SCH.face_orders
+--        Fixed   : CREATE OR REPLACE TABLE SILVER_SCH.FACT_ORDERS
+
+-- BUG 2: sp_silver_to_star had syntax errors
+--        Original: "creaet or replace silver_sch.sp_silver_to_star()"
+--        Missing PROCEDURE keyword, typos in LANGUAGE/RETURNS
+--        Fixed   : Full correct syntax
+
+-- BUG 3: dim_customers merge had wrong column update
+--        Original: tgt.customer_id = src.customer_name (wrong!)
+--        Fixed   : tgt.customer_name = src.customer_name
+
+-- BUG 4: dim_supplier had unit_price column (wrong table)
+--        unit_price belongs to dim_product, not dim_supplier
+--        Removed from dim_supplier definition
+
+-- BUG 5: temp_stream_data WHERE clause syntax
+--        Original: "when metadata$action = 'insert'"
+--        (WHEN is not valid here — needs WHERE)
+--        Fixed   : WHERE METADATA$ACTION = 'INSERT'
+-- ============================================================
