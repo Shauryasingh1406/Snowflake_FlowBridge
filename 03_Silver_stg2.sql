@@ -776,3 +776,5 @@ JOIN SILVER_SCH.DIM_WAREHOUSE   W  ON F.warehouse_sk = W.warehouse_sk
 LEFT JOIN SILVER_SCH.DIM_SHIPMENT SH ON F.shipment_sk = SH.shipment_sk
 LIMIT 20;
 
+
+
