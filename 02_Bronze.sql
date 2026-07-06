@@ -1,4 +1,4 @@
--- purpose : Storgae Integration , file format , external layer , RAW_ORDERS table , snowpipe 
+ -- purpose : Storgae Integration , file format , external layer , RAW_ORDERS table , snowpipe 
 --ENV--
 use database flowbridge_dev_db ;
 
